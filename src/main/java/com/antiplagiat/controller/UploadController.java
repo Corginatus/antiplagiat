@@ -65,27 +65,21 @@ public class UploadController {
             {
                 char[] chars = new char[(int) file_r.length()];
                 fr.read(chars);
-
                 String text = new String(chars);
-//                System.out.println(text);
-
+                System.out.println(text);
                 Set<String> keywords = KeywordExtractor.extractKeywords(text);
                 System.out.println("Keywords: " + keywords);
+
             }
             catch (IOException e) {
                 e.printStackTrace();
             }
-
             System.out.println("---PROGRAM END---");
-
-
             redirectAttributes.addFlashAttribute("message",
                     "You successfully uploaded '" + file.getOriginalFilename() + "'");
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return "redirect:/file/uploadStatus";
     }
 

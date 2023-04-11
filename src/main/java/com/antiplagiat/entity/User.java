@@ -1,12 +1,15 @@
 package com.antiplagiat.entity;
 
+import javafx.scene.paint.PhongMaterial;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
+import java.util.concurrent.Phaser;
 
 @Entity
 @Table(name = "t_user")
@@ -22,6 +25,9 @@ public class User implements UserDetails {
     private String passwordConfirm;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Text> textList;
 
     public User() {
     }
