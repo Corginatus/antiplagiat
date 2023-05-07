@@ -51,13 +51,6 @@ public class UploadController {
             Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
             Files.write(path, bytes);
 
-//            System.out.println("TEXT START");
-//            List<String> loop_files = Files.readAllLines(path);
-//            for (String loop_file : loop_files) {
-//                System.out.println(loop_file);
-//            }
-//            System.out.println("TEXT END");
-
             System.out.println("---PROGRAM START---");
             File file_r = new File(UPLOADED_FOLDER + file.getOriginalFilename());
 

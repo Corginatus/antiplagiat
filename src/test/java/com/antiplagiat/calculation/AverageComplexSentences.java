@@ -28,7 +28,7 @@ public class AverageComplexSentences {
         }
 
         // Calculate the percentage of complex sentences
-        double percentage = ((double) complexSentencesCount / totalSentencesCount) * 100;
+        double percentage = ((double) complexSentencesCount / totalSentencesCount);
 
         return percentage;
     }

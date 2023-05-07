@@ -80,9 +80,12 @@ public class SaatyMethod {
         }
 
         // Adjust weight of criterion
-        weights[0] *= 4;
-        weights[1] *= 2;
-        weights[2] *= 1;
+//        weights[0] *= 1;
+//        weights[1] *= 4;
+//        weights[2] *= 2;
+        weights[0] = 0.105826;
+        weights[1] = 0.634955;
+        weights[2] = 0.259219;
 
         return weights;
     }
