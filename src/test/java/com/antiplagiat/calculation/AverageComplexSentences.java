@@ -27,6 +27,7 @@ public class AverageComplexSentences {
             }
         }
 
+//        System.out.println("complexSentencesCount=" + complexSentencesCount + ". " + "totalSentencesCount=" + totalSentencesCount);
         // Calculate the percentage of complex sentences
         double percentage = ((double) complexSentencesCount / totalSentencesCount);
 
