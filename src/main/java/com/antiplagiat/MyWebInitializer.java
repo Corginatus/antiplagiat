@@ -8,24 +8,19 @@ import java.io.File;
 
 public class MyWebInitializer extends
         AbstractAnnotationConfigDispatcherServletInitializer {
-
     private int maxUploadSizeInMb = 5 * 1024 * 1024; // 5 MB
-
     @Override
     protected Class<?>[] getServletConfigClasses() {
         return new Class[]{SpringWebMvcConfig.class};
     }
-
     @Override
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
-
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return null;
     }
-
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
 

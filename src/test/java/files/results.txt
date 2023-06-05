@@ -1,0 +1,19 @@
+вес критерия a1 = 0.5;
+вес критерия a2 = 0.5;
+gugo_otver_1 - gugo_otver_2 = 0.491 - похожи
+gugo_otver_1 - gogol_noch_1 = 0.582 - не похожи
+gogol_noch_1 - gogol_noch_2 = 0.445 - похожи
+gogol_noch_1 - voinaimir_1 = 0.533 - не похожи
+voinaimir_1 - voinaimir_2 = 0.458 - похожи
+voinaimir_1 - dostoevskii_besi_1 = 0.611 - не похожи
+dostoevskii_besi_1 - dostoevskii_besi_2 = 0.410 - похожи
+dostoevskii_besi_1 - dostoevskii_idiot = 0.458 - похожи
+
+gugo_otver_1 - gugo_otver_2 = 0.494 - похожи
+gugo_otver_1 - gogol_noch_1 = 0.568 - не похожи
+gogol_noch_1 - gogol_noch_2 = 0.453 - похожи
+gogol_noch_1 - voinaimir_1 = 0.538 - не похожи
+voinaimir_1 - voinaimir_2 = 0.470 - похожи
+voinaimir_1 - dostoevskii_besi_1 = 0.646 - не похожи
+dostoevskii_besi_1 - dostoevskii_besi_2 = 0.409 - похожи
+dostoevskii_besi_1 - dostoevskii_idiot = 0.454 - похожи

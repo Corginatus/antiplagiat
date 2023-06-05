@@ -15,7 +15,6 @@
         <a class="navbar-brand">
             <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
             ${pageContext.request.userPrincipal.name}, hello.
-
         </a>
 
         <div class="collapse navbar-collapse" id="navbarScroll">
@@ -34,8 +33,8 @@
                         Text
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/">My texts</a></li>
-                        <li><a class="dropdown-item" href="/">My texts</a></li>
+                        <li><a class="dropdown-item" href="/file/texts">My texts</a></li>
+                        <li><a class="dropdown-item" href="/">Use email</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/file/upload">Upload new file</a></li>
                     </ul>
@@ -48,7 +47,6 @@
                     <a class="nav-link" href="/logout">Exit</a>
                 </li>
             </ul>
-
 
             <form class="d-flex">
 

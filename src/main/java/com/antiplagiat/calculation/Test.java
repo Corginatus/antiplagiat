@@ -1,10 +1,6 @@
-package com.antiplagiat;
+package com.antiplagiat.calculation;
 
-import com.antiplagiat.calculation.KeywordExtractor;
-import com.antiplagiat.calculation.SaatyMethod;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.tartarus.snowball.ext.russianStemmer;
 
 import java.io.File;
@@ -14,22 +10,21 @@ import java.util.*;
 
 import static com.antiplagiat.calculation.AverageComplexSentences.calculateAverageComplexity;
 import static com.antiplagiat.calculation.AverageSentenceLength.calculateAverageSentenceLength;
-
-
 import static com.antiplagiat.calculation.CosineSimilarity.*;
 import static com.antiplagiat.calculation.SaatyMethod.startSaaty;
 
 @SpringBootApplication
 public class Test {
-    public static void main(String[] args) {
+    public static List<String> fun(String name1, String name2) {
 //        gugo_otver_1
 //        gogol_noch_1
 //        voinaimir_1
 //        dostoevskii_besi_1
 //        dostoevskii_idiot
-
+//        String result = null;
         System.out.println("---TF-IDF---");
-        File file = new File("C:\\Users\\37529\\antiplagiat\\src\\test\\java\\files\\voinaimir_1.txt");
+        List<String> result = new ArrayList<String>();
+        File file = new File("C:\\Users\\37529\\antiplagiat\\src\\main\\files\\" + name1);
         String text = null;
         try (FileReader fr = new FileReader(file)) {
             char[] chars = new char[(int) file.length()];
@@ -39,7 +34,7 @@ public class Test {
             e.printStackTrace();
         }
 
-        File file2 = new File("C:\\Users\\37529\\antiplagiat\\src\\test\\java\\files\\dostoevskii_besi_1.txt");
+        File file2 = new File("C:\\Users\\37529\\antiplagiat\\src\\main\\files\\" + name2);
         String text2 = null;
         try (FileReader fr = new FileReader(file2)) {
             char[] chars = new char[(int) file2.length()];
@@ -74,6 +69,7 @@ public class Test {
         st2 = processed2Text.toString().trim();
 
         System.out.println(st);
+//        result = result + "\n" + st;
 //        System.out.println("---cosineSimilarity---");
 
 //        Map<String, Double> resTf = computeTF(st);
@@ -108,6 +104,7 @@ public class Test {
         // Выводим результаты
         for (int i = 0; i < tfIdfDocs.size(); i++) {
             System.out.println("TF-IDF для документа " + (i+1) + ": " + tfIdfDocs.get(i));
+//            result = result + "\nTF-IDF для документа " + (i+1) + ": " + tfIdfDocs.get(i);
         }
 
         Set<String> words = new HashSet<>(tfIdfDocs.get(0).keySet());
@@ -144,38 +141,50 @@ public class Test {
         double f1 = dotProduct / (Math.sqrt(norm1) * Math.sqrt(norm2));
 //        System.out.println(dotProduct + " / " + (Math.sqrt(norm1) + " * " + Math.sqrt(norm2)) + " = " + f1);
         System.out.println("Cosine similarity: " + f1);
+        result.add("\nCosine similarity: " + f1);
 
         System.out.println("---calculateAverageSentenceLength---");
+        result.add("\n---calculateAverageSentenceLength---");
 
         double avgSentenceLengthText1 = calculateAverageSentenceLength(text);
         System.out.println("text 1: " + avgSentenceLengthText1);
+        result.add("\ntext 1: " + avgSentenceLengthText1);
         double avgSentenceLengthText2 = calculateAverageSentenceLength(text2);
         System.out.println("text 2: " + avgSentenceLengthText2);
+        result.add("\ntext 2: " + avgSentenceLengthText2);
 
 
         System.out.println("---calculateAverageComplexity---");
+        result.add("\n---calculateAverageComplexity---");
 
         double complexSentencesPercentText1 = calculateAverageComplexity(text);
         double complexSentencesPercentText2 = calculateAverageComplexity(text2);
 
         System.out.println("text 1: " + complexSentencesPercentText1);
         System.out.println("text 2: " + complexSentencesPercentText2);
+        result.add("\ntext 1: " + complexSentencesPercentText1);
+        result.add("\ntext 2: " + complexSentencesPercentText2);
 
         double[] t1 = {avgSentenceLengthText1, complexSentencesPercentText1};
         double[] t2 = {avgSentenceLengthText2, complexSentencesPercentText2};
 
         System.out.println("TESTt1=" + t1[0] + "; " + t1[1]);
         System.out.println("TESTt2=" + t2[0] + "; " + t2[1]);
+        result.add("\nTESTt1=" + t1[0] + "; " + t1[1]);
+        result.add("\nTESTt2=" + t2[0] + "; " + t2[1]);
 
         double cosineSimilarity = cosineSimilarity(t1, t2);
         System.out.println("Cosine similarity2: " + cosineSimilarity);
+        result.add("\nCosine similarity2: " + cosineSimilarity);
 
         System.out.println("---SaatyMethod---");
+        result.add("\n---SaatyMethod---");
 
         double resultSaaty = startSaaty(f1, cosineSimilarity);
         System.out.println("resultSaaty:" + resultSaaty);
+        result.add("\nresultSaaty:" + resultSaaty);
 
-
+        return result;
     }
 }
 

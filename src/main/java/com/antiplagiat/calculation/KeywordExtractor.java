@@ -3,9 +3,12 @@ package com.antiplagiat.calculation;
 
 import java.util.*;
 
+import static com.antiplagiat.calculation.RussianWordEndings.removeRussianWordEnding;
+
 public class KeywordExtractor {
     private static final int NUM_KEYWORDS = 7;
-    private static final String[] STOP_WORDS = { "с", "на", "в", "как", "и", "это",
+    private static final String[] STOP_WORDS = { "с", "на", "в", "как", "и", "это", "или", "при", "не", "ни", "что",
+                                                    "мы", "ты", "бы", "я", "а", "ее", "да", "ли",
                                                     "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
 
     public static Set<String> extractKeywords(String text) {
@@ -31,7 +34,15 @@ public class KeywordExtractor {
         tfIdf.entrySet().stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .limit(NUM_KEYWORDS)
-                .forEach(entry -> keywords.add(entry.getKey()));
+                .forEach(entry -> {
+//                    System.out.print(removeRussianWordEnding(entry.getKey()));
+//                    System.out.println();
+                    keywords.add(removeRussianWordEnding(entry.getKey()));
+                });
+
+//        for (String word : keywords){
+//
+//        }
 
         return keywords;
     }
